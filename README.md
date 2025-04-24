@@ -11,9 +11,11 @@ To write a python program to perform stop and wait protocol
 ## PROGRAM
 
 import time
+
 import random
 
 class Packet:
+
     def __init__(self, data, seq_no):
         self.data = data
         self.seq_no = seq_no
@@ -22,6 +24,7 @@ class Packet:
         return f"Packet(Data: '{self.data}', Seq: {self.seq_no})"
 
 class Sender:
+
     def __init__(self, receiver):
         self.receiver = receiver
         self.next_seq_no = 0
@@ -45,6 +48,7 @@ class Sender:
         return self.receiver.acknowledgement
 
 class Receiver:
+
     def __init__(self):
         self.expected_seq_no = 0
         self.acknowledgement = None
@@ -61,8 +65,8 @@ class Receiver:
             print(f"Receiver: Unexpected sequence number. Discarding packet. Sending ACK {1 - self.expected_seq_no} (previous ACK)")
             self.acknowledgement = 1 - self.expected_seq_no # Acknowledge the last correctly received packet
 
-# Simulation
 if __name__ == "__main__":
+
     receiver = Receiver()
     sender = Sender(receiver)
 
